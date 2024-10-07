@@ -2,13 +2,13 @@
 
 ## Team Name and Members
 **group8**
-- Forcucci, Enzo @En90
+- Forcucci, Enzo: 
 - Runckel, David
-- Tesfai, Ben
-- Trotman, William
+- Tesfai, Ben: 
+- Trotman, William: 
   
 ## Scenario Description
-Tasked with constructing a data model, populating its corresponding database, and formulating relevant SQL queries, my fellow group members and I landed on using the PGA Tour as the basis of our group project. [description of the PGA Tour] 
+Tasked with constructing a data model, populating its corresponding database, and formulating relevant SQL queries, my fellow group members and I landed on using the PGA Tour as the basis of our group project. The PGA Tour organizes the most prominent tournaments in the professional golf world including the four majors (The Masters, PGA Championship, US Open, & the Open Championship). Our data model provides a statistical overview of all tournaments organized by the PGA Tour including detailed records of players and their connections. In terms of managerial usage, its primary purpose is for record-keeping and statistical value which can be used by the PGA Tour and associated organizations or for recreational use by content-creators and fans of the game.
 
 ## Data Model
 ![](datamodel.png)
@@ -39,7 +39,6 @@ The PGA Tour data model contains 11 total entities, 4 of those being created fro
 
 ## Data Dictionary
 **Players Table**
-
 | Column Name | Description | Data Type | Size | Format | Key |
 |:------------|:------------|:----------|:-----|:-------|:----|
 | player_id | primary key of Players table | INT | | | PK |
@@ -130,67 +129,17 @@ The PGA Tour data model contains 11 total entities, 4 of those being created fro
 
 ## Ten Queries
 
-Query 1 (Simple): How many courses in each country?
-
-use ha_group8;
-
-SELECT Countries.country_name, COUNT(Courses.course_id) AS total_courses <br>
-FROM Courses <br>
-JOIN Countries ON Courses.country_id = Countries.country_id <br>
-GROUP BY Countries.country_name; <br>
-
-| Country Name  | Total Courses |
-|---------------|---------------|
-| Australia     | 2             |
-| Germany       | 1             |
-| Japan         | 1             |
-| South Africa  | 1             |
-| USA           | 2             |
-| Spain         | 1             |
-| UK            | 2             |
-
-Query 2 (Complex): Which players (with a rank 2 or lower) are making more money from sponsorship deals than players with a rank of 1?
-
-WITH AvgRank1Sponsorship AS (  
-    SELECT AVG(SponsorshipDeals.deal_amount) AS avg_sponsorship <br>
-    FROM SponsorshipDeals <br>
-    JOIN Players ON SponsorshipDeals.player_id = Players.player_id <br>
-    WHERE Players.rank = 1 <br>
-) <br>
-SELECT Players.player_fn, Players.player_ln, SUM(SponsorshipDeals.deal_amount) AS total_sponsorship <br>
-FROM Players <br>
-JOIN SponsorshipDeals ON Players.player_id = SponsorshipDeals.player_id <br>
-WHERE Players.rank > 1 <br>
-GROUP BY Players.player_fn, Players.player_ln <br>
-HAVING SUM(SponsorshipDeals.deal_amount) > (SELECT avg_sponsorship FROM AvgRank1Sponsorship); <br>
-
-| First Name | Last Name  | Total Sponsorship |
-|------------|------------|-------------------|
-| Kenji      | Nakamura   | 550000.00         |
-| John       | Smith      | 500000.00         |
-| Jack       | Williams   | 520000.00         |
-
-
-Query 3 (Complex): How much does each industry give in sponsorship deals (in percentage)?
-
-WITH TotalSponsorship AS ( <br>
-    SELECT SUM(SponsorshipDeals.deal_amount) AS total_sponsorship <br>
-    FROM SponsorshipDeals <br>
-) <br>
-SELECT Sponsors.industry, <br>
-       SUM(SponsorshipDeals.deal_amount) AS industry_total, <br>
-       (SUM(SponsorshipDeals.deal_amount) / (SELECT total_sponsorship FROM TotalSponsorship) * 100) AS percentage_contribution <br>
-FROM SponsorshipDeals <br>
-JOIN Sponsors ON SponsorshipDeals.sponsor_id = Sponsors.sponsor_id <br>
-GROUP BY Sponsors.industry; <br>
-
-| Industry    | Industry Total | Percentage Contribution |
-|-------------|----------------|-------------------------|
-| Watches     | 810000.00      | 17.880795               |
-| Apparel     | 1410000.00     | 31.125828               |
-| Tires       | 450000.00      | 9.933775                |
-| Equipment   | 1860000.00     | 41.059603               |
-
-
 ## Database Information
+**Queries**
+|   | Query 1 | Query 2 | Query 3 | Query 4 | Query 5 | Query 6 | Query 7 | Query 8 | Query 9 | Query 10 |
+|:--|:--------|:--------|:--------|:--------|:--------|:--------|:--------|:--------|:--------|:---------|
+| function | | | X | X | X | X | X | X | X | X |
+| group by | | | X | X | X | X | | | X | X |
+| having | | | | | | X | | | | |
+| limit | | | | | | | | X | | |
+| multiple condition where | X | X | | | | | X | | X | |
+| multiple table join | X | X | | X | X | X | X | X | X | X |
+| order by | | X | X | | | | | X | | X |
+| subquery | | | | | X | X | X | | X | |
+
 **ha_group8**
