@@ -128,6 +128,49 @@ The PGA Tour data model contains 11 total entities, 4 of those being created fro
 | country_id | foreign key from the Countries Table to show what country the course is in | INT | | | FK |
 
 ## Ten Queries
+**Simple Queries**
+
+![](query1.png)
+
+**1.** Query #1 returns the first and last name of the player along with their sponsorship partner and amount if the deal amount is over $450,000. This could be used by sponsors or players' agents to negotiate deals by filtering deal amounts to try and argue a certain $ amount.
+
+![](query2.png)
+
+**2.** Query #2 returns the order of sponsorship amounts associated with each player ordered by their current rank in the PGA Tour. Using this data can give users an idea of whether or not there's a correlation between player rank and the amount of sponsorships they receive along with the amount of each.
+
+![](query3.png)
+
+**3.** Query #3 returns the total prize money awarded to the winners of each tournament and orders them by total amount. This can help users understand which tournaments are perceived as the most prestigious or important within the PGA Tour. 
+
+![](query4.png)
+
+**4.** Query #4 shows the user the number of courses in the PGA Tour grouped by each country. This helps users get a grasp of where most tournaments are played in the PGA Tour. One potential flaw is how it doesn't explain why a country may have more courses than another. Is it a geographical advantage or maybe just historical courses getting priority over others? There are numerous questions that could be levied against this query given its simplicity.
+
+**Complex Queries**
+
+![](query5.png)
+
+**5.** Query #5 returns the total sum of sponsorship deals grouped by industry. Along with this is the total percentage regarding all sponsorships for the PGA Tour. What makes this so valuable as a piece of data is how users, especially potential and current investors/sponsors can see what their industry is currently contributing to the PGA Tour and whether it is economically advantageous to form a deal.
+
+![](query6.png)
+
+**6.** Query #6 specifically returns the names and sponsorship amounts of players who make more than the number one ranked player. This data is focused on sponsors and player agents regarding contract negotiations. For example, if the ranked one player sees that there are a large amount of people earning more in sponsorship money compared to themselves, they can urge their agent to reach out to sponsors. Also, if a sponsor sees one of their players is making way more money than the highest ranked player, they may elect to renegotiate the deal.
+
+![](query7.png)
+
+**7.** Query #7 returns players and their total score in a tournament only if their score is lower than the average total score among all tournaments recorded in the database. This query possesses value primarily for fans of the game who want to see historical data regarding total tournament scores. However, because the tournament's name is also included in the response, a trend could be formed in one's head on whether certain tournaments are easier and possess more lower than average scores than other tournaments. What would have enhanced this query even further would be the inclusion of the course name to see whether there existed a trend there but the data model doesn't support this interaction due to only realizing this connection after the fact.
+
+![](query8.png)
+
+**8.** Query #8 returns the 8 lowest point totals between golfer-caddy pairs. This query primarily is oriented toward statisticians who want to see historic underperforming pairs filtered to a certain amount of pairs for a quicker response, especially when in reality there exists thousands of pairs. 
+
+![](query9.png)
+
+**9.** Query #9 returns the percentage of scores under or over par, particularly in the first round of a tournament. The value of a query like this comes from an analytical perspective. Users can manipulate the round number and see patterns regarding under/over par values based on the round number. Perhaps there are more under-par values in early rounds because players are fresher for example. With a query like this, even players can utilize the data to perhaps save their energy in earlier rounds to perform greater in later rounds to gain an advantage in the standings.
+
+![](query10.png)
+
+**10.** Query #10 is another sponsorship deal query used to display earnings between players and their caddies. This adds an additional element regarding caddies and how they may impact sponsorship amounts and give a wider perspective on deals between sponsors and players. For example, a highly renowned caddy or well-known one may assist the player in getting more sponsorship deals.
 
 ## Database Information
 **Queries**
@@ -143,4 +186,7 @@ The PGA Tour data model contains 11 total entities, 4 of those being created fro
 | subquery | | | | | X | X | X | | X | |
 
 **ha_group8**
-Stored Procedure Format: TP_Qx (x:1-10).
+
+Stored Procedure Format: TP_Qx (x:1-10)
+
+Presentation Link: https://www.canva.com/design/DAGRxuPISMg/KVZ8mDdSKbaAsiLlrXUE0Q/edit?utm_content=DAGRxuPISMg&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton
