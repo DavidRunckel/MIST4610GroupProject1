@@ -2,10 +2,10 @@
 
 ## Team Name and Members
 **group8**
-- Forcucci, Enzo: 
+- Forcucci, Enzo: https://github.com/En9o/4610-Project
 - Runckel, David
 - Tesfai, Ben: 
-- Trotman, William: 
+- Trotman, William: https://github.com/wptrot/MIST4610Group8Project1
   
 ## Scenario Description
 Tasked with constructing a data model, populating its corresponding database, and formulating relevant SQL queries, my fellow group members and I landed on using the PGA Tour as the basis of our group project. The PGA Tour organizes the most prominent tournaments in the professional golf world including the four majors (The Masters, PGA Championship, US Open, & the Open Championship). Our data model provides a statistical overview of all tournaments organized by the PGA Tour including detailed records of players and their connections. In terms of managerial usage, its primary purpose is for record-keeping and statistical value which can be used by the PGA Tour and associated organizations or for recreational use by content-creators and fans of the game.
